@@ -5,19 +5,27 @@ import BookModel from "../books/book.model";
 // import BorrowModel from "./borrow.model";
 
 // ---borrow post-1
-const createBorrow = async (req: Request, res: Response, next: NextFunction) => {
+const createBorrow = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
-    const {book, quantity} = req.body;
+    const { book, quantity } = req.body;
 
-const Onebook = await BookModel.findById(book);
-    if(!Onebook){throw new Error("this book not found for borrow!🫗")};
+    const Onebook = await BookModel.findById(book);
+    if (!Onebook) {
+      throw new Error("this book not found for borrow!🫗");
+    }
 
-    if(Onebook.copies < quantity){throw new Error("Not enough copies available")}
+    if (Onebook.copies < quantity) {
+      throw new Error("Not enough copies available");
+    }
 
     Onebook.copies -= quantity;
     Onebook.updateBookAvailability(); // custom instance method: set available = false if copies === 0
 
-  await  Onebook.save();
+    await Onebook.save();
 
     const data = await BorrowModel.create(req.body);
 
@@ -32,8 +40,11 @@ const Onebook = await BookModel.findById(book);
 };
 // ----------------------
 // --get all borrows -2
-const getAllBorrows = async (req: Request, res: Response, next: NextFunction) => {
-
+const getAllBorrows = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     // ----------------------query steps start here ------------
     // --- STEP 1: Query params
@@ -50,8 +61,9 @@ const getAllBorrows = async (req: Request, res: Response, next: NextFunction) =>
 
     // --- STEP 3: query database
     const allborrows = await BorrowModel.find(filterX)
-    .sort({[sortByCreatedTime] : sortOrder}) // dynamic sorting
-    .limit(limitX).populate("book");
+      .sort({ [sortByCreatedTime]: sortOrder }) // dynamic sorting
+      .limit(limitX)
+      .populate("book");
     // .limit(limitX);
     // ----------------------query steps end here ------------
 
@@ -69,14 +81,21 @@ const getAllBorrows = async (req: Request, res: Response, next: NextFunction) =>
 
 // --get single  borrow-3
 
-const getSingleBorrow = async (req: Request, res: Response, next: NextFunction) => {
-   try {
+const getSingleBorrow = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
     const borrowId = req.params.borrowId;
     const data = await BorrowModel.findById(borrowId).populate("book");
     res.status(200).send({
       success: true,
-      message: data == null ? "This borrow's  might have been deleted!🤔" : "sinlge borrow retrieved successfully✅",// jodi ei id wala  borrow ta na thake tokon jate null na diye ei msg ta dei.
-      data: data == null ? "empty this id's data🫗" : data
+      message:
+        data == null
+          ? "This borrow's  might have been deleted!🤔"
+          : "sinlge borrow retrieved successfully✅", // jodi ei id wala  borrow ta na thake tokon jate null na diye ei msg ta dei.
+      data: data == null ? "empty this id's data🫗" : data,
     });
   } catch (error) {
     next(error);
@@ -85,7 +104,11 @@ const getSingleBorrow = async (req: Request, res: Response, next: NextFunction) 
 
 // --update borrow-4
 
-const updateBorrow = async (req: Request, res: Response, next: NextFunction) => {
+const updateBorrow = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const borrowId = req.params.borrowId;
 
@@ -107,11 +130,15 @@ const updateBorrow = async (req: Request, res: Response, next: NextFunction) => 
 
 // --replace borrow-5
 
-const replaceBorrow = async (req: Request, res: Response, next: NextFunction) => {
+const replaceBorrow = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const borrowId = req.params.borrowId;
 
-    const dataForReplace =  req.body;// req.body syncronous kaj kore. so await lagbnea, id er moto
+    const dataForReplace = req.body; // req.body syncronous kaj kore. so await lagbnea, id er moto
 
     const data = await BorrowModel.findOneAndReplace(
       { _id: borrowId },
@@ -130,19 +157,27 @@ const replaceBorrow = async (req: Request, res: Response, next: NextFunction) =>
 
 // --delete borrow-6
 
-const deleteBorrow = async (req: Request, res: Response, next: NextFunction) => {
+const deleteBorrow = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const borrowId = req.params.borrowId;
-// ---------borrow delete kore dile jate jei book borrow korsilo segulo jate aber restore hoye jai oi book er copies er modde
+    // ---------borrow delete kore dile jate jei book borrow korsilo segulo jate aber restore hoye jai oi book er copies er modde
     const borrow = await BorrowModel.findById(borrowId);
-if(!borrow){throw new Error("borrow not found for delete")};
+    if (!borrow) {
+      throw new Error("borrow not found for delete");
+    }
 
     const book = await BookModel.findById(borrow.book);
 
-    if(!book){throw new Error("this book not found")};
+    if (!book) {
+      throw new Error("this book not found");
+    }
     book.copies += borrow.quantity;
-   await  book.save();
-// --------------
+    await book.save();
+    // --------------
     const data = await BorrowModel.findByIdAndDelete(borrowId);
     res.status(200).send({
       success: true,
@@ -154,26 +189,86 @@ if(!borrow){throw new Error("borrow not found for delete")};
   }
 };
 
-
 // ----return book-7
 
-const returnBooksController = async (req :Request,res:Response,next : NextFunction)=>{
+const returnBooksController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const borrowId = req.params.borrowId;
 
-await returnBook(borrowId);
+    await returnBook(borrowId);
 
     res.status(200).send({
       success: true,
       message: "Book returned successfully✅",
-    //   quantity : borrowBook?.quantity,
+      //   quantity : borrowBook?.quantity,
     });
   } catch (error) {
     next(error);
   }
-}
+};
+
+// --get borrow summery -8
+const getBorrowSummeryByAggregatePipline = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+
+    // -----------------aggregate piplin start here-------------
+    const summary =await  BorrowModel.aggregate([
+      // stage-1
+      {
+        $group: {
+          _id: "$book", // group by book ID
+          totalQuantity: { $sum: "$quantity" }, // total quantity per book
+        },
+      },
+      // stage-2
+      {
+        $lookup:  {
+          from:"booksCollection1_of_library-database",
+          localField:"bookID",// ekane _id = borrow er book (bookId) ta 
+          foreignField:"_id", // ekane _id =  bookDB_Collection er  (bookId) ta 
+          as : "bookDetails",
+
+        }
+      },
+
+      // stage-3
+      {
+        $unwind : "$bookDetails",
+      },
+
+      // stage-4:
+      {
+        $project: {
+          _id:0,
+          book: {
+            title: "$bookDetails.title",
+            isbn : "$bookDetails.isbn"
+
+          },
+          totalQuantity:1
+        }
+      }
+    ]);
+// -----------------aggregate piplin end here-------------
+     res.status(200).json({
+      success: true,
+      message: "Borrowed books summary retrieved successfully",
+      data: summary,
+     });
 
 
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const borrowController = {
   createBorrow,
@@ -182,5 +277,6 @@ export const borrowController = {
   updateBorrow,
   replaceBorrow,
   deleteBorrow,
-  returnBooksController
+  returnBooksController,
+  getBorrowSummeryByAggregatePipline
 };
