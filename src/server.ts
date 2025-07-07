@@ -13,7 +13,7 @@ const MainFunc = async () =>
 
 try{
 
-// const url1 = configEnvVariable.database_url;// way-1
+// const url1 = configEnvVariable.database_url;// way-1..
 const url2 = process.env.DATABASE_URL;// way-2
 
 await mongoose.connect(url2 as string)
