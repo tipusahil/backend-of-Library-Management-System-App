@@ -1,0 +1,18 @@
+1.vercel
+2.vercel CLI:
+1st: check1 = server listen korar agei database er sate connect korte hobe,tai app.listen er age mongoose.connect(xyz) eta korte hobe,then app.listen korte hobe
+2.0. age terminal e = tsc lika build kora then vercel.json file ta setup kora, then a bar build kora.then
+2.1. globally vercel install kora = npm install -g vercel
+2.2. vercel install  check = vercel -v
+2.3. vercel e login cli diyei = vercel login
+2.4.  then github/google diye login option theke login kora,success hole
+2.5. then deploy kora = vercel --prod
+2.6. Set up and deploy? = yes/y diye enter 
+2.7. Which scope should contain your project? = enter
+2.8. Link to existing project? = no/n enter
+2.9. What’s your project’s name? =projectName
+2.10. In which directory is your code located? ./  = enter
+2.11 jodi error dei tahole error er response deke = (vercel --prod) eta abar calano
+2.12 then jei project deploy korsi sei project er https://vercel.com/tipusahils-projects/projectName(/settings/environments/production) = ei page e giye ortat oi project er settings>environment>production>add new environment e giye sei project er database_url ta add korte hobe, jmn ta .env file e raka hoyece tik sevabei.
+2.13 
+3. Github

@@ -1,6 +1,6 @@
-import { ErrorRequestHandler } from "express";
+import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
 
-const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
   if (err.name === "ValidationError") {
     res.status(400).json({
       success: false,

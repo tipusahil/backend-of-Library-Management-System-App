@@ -1,7 +1,7 @@
 import BookModel from "../books/book.model";
 import BorrowModel from "./borrow.model";
 
-export const returnBook = async (borrowId: string): Promise<void> => {
+export const returnBook = async (borrowId: any): Promise<void> => {
   const borrow = await BorrowModel.findById(borrowId);
   if (!borrow) throw new Error("Borrow record not found");
 

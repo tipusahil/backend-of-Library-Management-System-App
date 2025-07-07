@@ -1,14 +1,12 @@
 
 import app from "./app";
-import { Server } from "http";
+
 import configEnvVariable from "./config/envVariable";
 import mongoose, { mongo } from "mongoose";
 
 
 
-const server1 :Server =  app.listen(configEnvVariable.port,()=>{
-    console.log(`server successfully run on port = ${configEnvVariable.port} ✅`);
-})
+
 
 const MainFunc = async () =>
     {
@@ -21,6 +19,13 @@ const url2 = process.env.DATABASE_URL;// way-2
 await mongoose.connect(url2 as string)
 .then(() => console.log("🟢 MongoDB connected"))
 .catch((err) => console.error("🔴 MongoDB connection failed:", err));
+
+
+// -------server listening korar agei database er sate connect hote hoi,nahoi deploy korar pore dta get korar somoy data kuje pawa jabena.--------
+const server1  =  app.listen(configEnvVariable.port,()=>{
+    console.log(`server successfully run on port = ${configEnvVariable.port} ✅`);
+})
+
 
 }
  catch(error){

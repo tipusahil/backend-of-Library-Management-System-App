@@ -13,19 +13,22 @@ const createBorrow = async (
   try {
     const { book, quantity } = req.body;
 
-    const Onebook = await BookModel.findById(book);
-    if (!Onebook) {
-      throw new Error("this book not found for borrow!🫗");
-    }
+    // ---------start-----borrow korle jate book er database theke  sei borrow er quantity onujai book kome jai---
 
-    if (Onebook.copies < quantity) {
-      throw new Error("Not enough copies available");
-    }
+    // const Onebook = await BookModel.findById(book);
+    // if (!Onebook) {
+    //   throw new Error("this book not found for borrow!🫗");
+    // }
 
-    Onebook.copies -= quantity;
-    Onebook.updateBookAvailability(); // custom instance method: set available = false if copies === 0
+    // if (Onebook.copies < quantity) {
+    //   throw new Error("Not enough copies available");
+    // }
 
-    await Onebook.save();
+    // Onebook.copies -= quantity;
+    // Onebook.updateBookAvailability(); // custom instance method: set available = false if copies === 0
+
+    // await Onebook.save();
+    // --------end------borrow korle jate book er database theke  sei borrow er quantity onujai book kome jai---
 
     const data = await BorrowModel.create(req.body);
 
@@ -232,7 +235,7 @@ const getBorrowSummeryByAggregatePipline = async (
       {
         $lookup:  {
           from:"booksCollection1_of_library-database",
-          localField:"bookID",// ekane _id = borrow er book (bookId) ta 
+          localField:"_id",// Use `_id` from $group, which is the book ID
           foreignField:"_id", // ekane _id =  bookDB_Collection er  (bookId) ta 
           as : "bookDetails",
 
@@ -241,7 +244,10 @@ const getBorrowSummeryByAggregatePipline = async (
 
       // stage-3
       {
-        $unwind : "$bookDetails",
+        $unwind : {
+          path: "$bookDetails",
+          // preserveNullAndEmptyArrays: true, // Keep documents even if no book is found
+        }
       },
 
       // stage-4:

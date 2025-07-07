@@ -1,15 +1,13 @@
 import { model, Schema } from "mongoose";
 import { IBorrow } from "./borrow.interface";
 import BookModel from "../books/book.model";
-import { timeStamp } from "console";
+
 
 const borrowSchema = new Schema<IBorrow>({
   quantity: { type: Number,
     min:[1,"atleast one book borrow"]
    },
-  dueDate: { type: Date,
-    default:Date.now,
-   },
+  dueDate: { type: String  },
      book: { type: Schema.Types.ObjectId,
     ref: "BookModel_insideModel",
     required:true,

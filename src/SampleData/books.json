@@ -1,0 +1,103 @@
+
+[
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "genre": "FICTION",
+    "isbn": "9780061122415",
+    "image": "https://images.unsplash.com/photo-1544947950-fa07a98d45f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "A philosophical tale of a young Andalusian shepherd pursuing his dream and destiny.",
+    "copies": 3,
+    "available": true
+  },
+  {
+    "title": "Sapiens: A Brief History of Humankind",
+    "author": "Yuval Noah Harari",
+    "genre": "NON_FICTION",
+    "isbn": "9780062316097",
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "A thought-provoking exploration of the history of Homo sapiens and our impact on the world.",
+    "copies": 4,
+    "available": true
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genre": "FANTASY",
+    "isbn": "9780547928227",
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "An adventurous tale of Bilbo Baggins, a hobbit who embarks on a quest with dwarves and a wizard.",
+    "copies": 2,
+    "available": false
+  },
+  {
+    "title": "A Brief History of Time",
+    "author": "Stephen Hawking",
+    "genre": "SCIENCE",
+    "isbn": "9780553380163",
+    "image": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "A landmark book explaining complex cosmological concepts in an accessible way.",
+    "copies": 3,
+    "available": true
+  },
+  {
+    "title": "Becoming",
+    "author": "Michelle Obama",
+    "genre": "BIOGRAPHY",
+    "isbn": "9781524763138",
+    "image": "https://images.unsplash.com/photo-1516979187457-6376b7a93248?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "An intimate memoir by the former First Lady of the United States.",
+    "copies": 5,
+    "available": true
+  },
+  {
+    "title": "The Guns of August",
+    "author": "Barbara W. Tuchman",
+    "genre": "HISTORY",
+    "isbn": "9780345386236",
+    "image": "https://images.unsplash.com/photo-1528712306091-ed0763094c98?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "A detailed account of the first month of World War I, exploring the decisions that shaped the conflict.",
+    "copies": 4,
+    "available": true
+  },
+  {
+    "title": "The Martian",
+    "author": "Andy Weir",
+    "genre": "SCIENCE",
+    "isbn": "9780804139021",
+    "image": "https://images.unsplash.com/photo-1546484396-fb3fc3a8d293?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "A gripping story of an astronaut stranded on Mars, fighting to survive.",
+    "copies": 3,
+    "available": true
+  },
+  {
+    "title": "The Name of the Wind",
+    "author": "Patrick Rothfuss",
+    "genre": "FANTASY",
+    "isbn": "9780756404079",
+    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4ebf0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "The epic tale of Kvothe, a gifted young man who becomes a legendary hero.",
+    "copies": 2,
+    "available": false
+  },
+  {
+    "title": "Educated",
+    "author": "Tara Westover",
+    "genre": "BIOGRAPHY",
+    "isbn": "9780399590504",
+    "image": "https://images.unsplash.com/photo-1516321310769-4f0d9c744e0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "A memoir about a young woman's journey from a strict upbringing to earning a PhD.",
+    "copies": 4,
+    "available": true
+  },
+  {
+    "title": "The Night Circus",
+    "author": "Erin Morgenstern",
+    "genre": "FANTASY",
+    "isbn": "9780385534635",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "A magical story of a mysterious circus and a competition between two young magicians.",
+    "copies": 3,
+    "available": true
+  }
+]
