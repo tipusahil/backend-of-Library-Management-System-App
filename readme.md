@@ -146,7 +146,7 @@ available: boolean;
 
 - Show borrow stats with aggregation API
 
----
+-------
 
 ## ✅ Bonus Features (For Full Marks):
 
