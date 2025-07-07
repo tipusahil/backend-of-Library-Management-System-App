@@ -1,4 +1,4 @@
-তুমি যেভাবে বিস্তারিতভাবে assignment টা তুলে ধরেছো, সেটা অনেক ভালো। এটা করলে তুমি **React + Redux Toolkit Query + TypeScript + Express.js + MongoDB** ecosystem-এ solid একটি production-level mini project করতে পারবে। নিচে ধাপে ধাপে *কীভাবে শুরু করবে, কোন অংশ আগে করবে, কোন structure ফলো করবে,* তার পুরো গাইড দিলাম।
+<!-- তুমি যেভাবে বিস্তারিতভাবে assignment টা তুলে ধরেছো, সেটা অনেক ভালো। এটা করলে তুমি **React + Redux Toolkit Query + TypeScript + Express.js + MongoDB** ecosystem-এ solid একটি production-level mini project করতে পারবে। নিচে ধাপে ধাপে *কীভাবে শুরু করবে, কোন অংশ আগে করবে, কোন structure ফলো করবে,* তার পুরো গাইড দিলাম।
 
 - assigment + ei prompt ta diye soution ber kora.
     
@@ -216,4 +216,4 @@ available: boolean;
 
 তোমার কোন অংশে হেল্প লাগবে বললেই আমি আলাদা করে করে দিচ্ছি।
 
-**চলো, শুরু করি — Backend schema তৈরি থেকে! চাইলে সেটা এখনই বানিয়ে দেই।**
+**চলো, শুরু করি — Backend schema তৈরি থেকে! চাইলে সেটা এখনই বানিয়ে দেই।** -->
